@@ -34,9 +34,11 @@ jobs:
 
       - name: Commit report
         run: |
-          # 새 거래일 데이터가 없으면(휴장일) 커밋하지 않는다
-          if git diff --quiet -- docs/data/breadth.json docs/data/snapshots.json; then
-            echo "no new trading data"; exit 0
+          # 기준일이 그대로면(휴장일) 커밋하지 않는다
+          prev=$(git show HEAD:docs/data/meta.json | jq -r .last_date)
+          last=$(jq -r .last_date docs/data/meta.json)
+          if [ "$prev" = "$last" ]; then
+            echo "no new trading data ($last)"; exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
