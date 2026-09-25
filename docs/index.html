@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>신고가 · 주도주 리포트</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
+</head>
+<body>
+<header class="wrap">
+  <h1>신고가 · 주도주 리포트</h1>
+  <p class="sub">코스피·코스닥 · 기준일 <b id="last-date">-</b> · <span id="gen"></span></p>
+</header>
+
+<main class="wrap">
+  <section>
+    <h2>지금 시장은?</h2>
+    <p class="hint">대세 상승기 판단: 신고가 종목이 많은가(1-2), 주도주군이 뚜렷한가(1-1)</p>
+    <div class="tiles" id="tiles"></div>
+  </section>
+
+  <div class="filters" role="group" aria-label="기간">
+    <span class="flabel">기간</span>
+    <button data-years="0">전체</button>
+    <button data-years="5">5년</button>
+    <button data-years="3" class="on">3년</button>
+    <button data-years="1">1년</button>
+  </div>
+
+  <section>
+    <h2>신고가 · 신저가 종목 수</h2>
+    <p class="hint">일별 52주(250거래일) 종가 신고가(위) · 신저가(아래) 종목 수. 선은 20일 평균.</p>
+    <div class="chart" id="c-breadth"></div>
+    <h3>지수 (구간 시작 = 100)</h3>
+    <div class="chart short" id="c-index"></div>
+  </section>
+
+  <section>
+    <h2>주도주군 타임라인</h2>
+    <p class="hint">같이 움직이며 신고가를 낸 종목 묶음을 월별로 이어 붙인 흐름. 원 크기 = 종목 수. 원을 누르면 그 달 상세로 이동합니다.</p>
+    <div class="chart tall" id="c-themes"></div>
+  </section>
+
+  <section id="detail">
+    <div class="detail-head">
+      <h2>월별 주도주군</h2>
+      <div class="month-nav">
+        <button id="prev" aria-label="이전 달">‹</button>
+        <select id="month"></select>
+        <button id="next" aria-label="다음 달">›</button>
+      </div>
+    </div>
+    <p class="hint" id="detail-sum"></p>
+    <div id="clusters"></div>
+    <h3>군집 밖 개별 신고가 (거래대금 상위)</h3>
+    <div class="tbl-wrap"><table class="tbl" id="singles"></table></div>
+  </section>
+
+  <section class="method">
+    <h2>방법</h2>
+    <ul id="method"></ul>
+    <p class="disclaimer">자동 생성된 참고 자료이며 투자 권유가 아닙니다. 데이터: FinanceDataReader(네이버 금융). 현재 상장 종목만 포함되어 상장폐지 종목은 빠져 있습니다(과거 수치가 다소 적게 잡힘).</p>
+  </section>
+</main>
+<div id="tip" class="tip" hidden></div>
+<script src="app.js"></script>
+</body>
+</html>
