@@ -1,1 +1,1 @@
-{"generated_at":"2026-10-05T00:16:29+00:00","last_date":"2026-10-02","n_stocks":2581,"params":{"nh_lookback":250,"window":20,"corr_days":120,"min_value_eok":10.0,"corr_th":0.3,"min_cluster":3,"link_th":0.3}}
+{"generated_at":"2026-10-07T01:08:16+00:00","last_date":"2026-10-07","n_stocks":2580,"params":{"nh_lookback":250,"window":20,"corr_days":120,"min_value_eok":10.0,"corr_th":0.3,"min_cluster":3,"link_th":0.3}}
